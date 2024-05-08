@@ -1,1 +1,2 @@
 # Team_8
+This HTML, CSS, and JavaScript code creates a simple yet visually appealing graphical user interface (GUI) for visualizing data collected by a mobile robot with obstacle avoidance, path planning, and navigation capabilities. The GUI displays ultrasonic sensor data and dynamically updates a map to visualize random obstacles. It serves as a basic framework for monitoring and interacting with the robot's perception of its environment in real-time.
