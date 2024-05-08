@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Data Visualization</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .sensor-data {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .sensor-data h2 {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    .sensor-data p {
+      margin: 0;
+      font-size: 18px;
+      color: #666;
+      text-align: center;
+    }
+
+    .sensor-data span {
+      font-weight: bold;
+      color: #00aaff;
+    }
+
+    #map {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f1f1f1;
+    }
+
+    .obstacle-marker {
+      background-color: #222bd68f;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Robot Data Visualization</h1>
+    <div class="sensor-data">
+      <h2>Ultrasonic Sensor Data</h2>
+      <p>Distance to nearest obstacle: <span id="distance">0</span> cm</p>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    
+    function getRandomDistance() {
+      return Math.floor(Math.random() * 100) + 1; 
+    }
+
+    function updateSensorData() {
+      var distance = getRandomDistance();
+      document.getElementById('distance').textContent = distance;
+    }
+
+    function updateMap() {
+      var mapElement = document.getElementById('map');
+      var obstacleCount = Math.floor(Math.random() * 5) + 1; 
+
+      mapElement.innerHTML = '';
+
+      for (var i = 0; i < obstacleCount; i++) {
+        var obstacleDistance = getRandomDistance();
+        var marker = document.createElement('div');
+        marker.textContent = 'Obstacle ' + (i + 1) + ': ' + obstacleDistance + 'cm';
+        marker.classList.add('obstacle-marker');
+        mapElement.appendChild(marker);
+      }
+    }
+
+    
+    setInterval(function() {
+      updateSensorData();
+      updateMap();
+    }, 5000);
+  </script>
+</body>
+</html>
